@@ -1,0 +1,46 @@
+﻿@page "/playlist"
+@using YoutubeExplode
+
+    <div class="main">
+        <form>
+            <input type="url" class="form-control" aria-describedby="youtube video link" placeholder="Video Link" @bind="url">
+            <button type="button" class="btn btn-primary" @onclick="GetPlaylist">Submit</button>
+        </form>
+
+        <h5>@count</h5>
+        @if (vidsList != null)
+        {
+            foreach (var video in vidsList)
+            {
+                <div class="card-deck">
+                    <div class="card">
+                        <img src="@video.Thumbnails.HighResUrl" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <a href="@video.Url" class="card-title">@video.Title</a>
+                            <p class="card-text">@video.Description</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">@video.Author</small>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+@code {
+    readonly YoutubeClient youtube = new YoutubeClient();
+    string url = "https://www.youtube.com/playlist?list=PLcGXBsk0XWfyjihyUjOr0J-0l1jUaro_d";
+    List<YoutubeExplode.Videos.Video> vidsList = new List<YoutubeExplode.Videos.Video>();
+    int count = 0;
+    async void GetPlaylist()
+    {
+        count=1;
+        count = 2;
+        await foreach (var video in youtube.Playlists.GetVideosAsync(url))
+        {
+            vidsList.Add(video);
+        }
+        //vidsList.Clear();
+    }
+}
