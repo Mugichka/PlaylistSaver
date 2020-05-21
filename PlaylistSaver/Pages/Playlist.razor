@@ -1,9 +1,9 @@
 ﻿@page "/playlist"
-@using YoutubeExplode
+@inject PlaylistSaver.Data.YoutubeService YoutubeService
 
     <div class="main">
         <form>
-            <input type="url" class="form-control" aria-describedby="youtube video link" placeholder="Video Link" @bind="url">
+            <input type="url" class="form-control" aria-describedby="Playlist Link" placeholder="Playlist Link" @bind="url">
             <button type="button" class="btn btn-primary" @onclick="GetPlaylist">Submit</button>
         </form>
 
@@ -29,18 +29,22 @@
     </div>
 
 @code {
-    readonly YoutubeClient youtube = new YoutubeClient();
-    string url = "https://www.youtube.com/playlist?list=PLcGXBsk0XWfyjihyUjOr0J-0l1jUaro_d";
+    //readonly YoutubeClient youtube = new YoutubeClient();
+    string url; //= "https://www.youtube.com/playlist?list=PLcGXBsk0XWfyjihyUjOr0J-0l1jUaro_d";
     List<YoutubeExplode.Videos.Video> vidsList = new List<YoutubeExplode.Videos.Video>();
     int count = 0;
     async void GetPlaylist()
     {
         count=1;
         count = 2;
-        await foreach (var video in youtube.Playlists.GetVideosAsync(url))
+
+        await foreach (var video in YoutubeService.youtube.Playlists.GetVideosAsync(url))
         {
             vidsList.Add(video);
         }
-        //vidsList.Clear();
+    }
+    void Clear()
+    {
+        vidsList.Clear();
     }
 }

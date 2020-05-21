@@ -29,7 +29,7 @@ namespace PlaylistSaver
             services.AddRazorPages();
             services.AddServerSideBlazor();
             services.AddSingleton<WeatherForecastService>();
-            services.AddSingleton<Youtube>();
+            services.AddSingleton<YoutubeService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
