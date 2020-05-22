@@ -1,15 +1,13 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PlaylistSaver.Data;
+using PlaylistSaver.Models;
+using System;
 
 namespace PlaylistSaver
 {
@@ -27,17 +25,32 @@ namespace PlaylistSaver
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddRazorPages();
+
             services.AddServerSideBlazor();
+            services.AddMvc().
+                AddNewtonsoftJson();
+
+            services.AddDbContext<PlaylistSaverContext>(options => options.UseSqlite("Data Sourse=saverData.db"));
+
+            services.AddDefaultIdentity<SaverUser>(options => options.SignIn.RequireConfirmedAccount = true).
+                AddEntityFrameworkStores<PlaylistSaverContext>();
+
+            services.AddIdentityServer().
+                AddApiAuthorization<SaverUser, PlaylistSaverContext>();
+
+            services.AddAuthentication().
+                AddIdentityServerJwt();
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<YoutubeService>();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+                app.UseWebAssemblyDebugging();
             }
             else
             {
@@ -47,15 +60,25 @@ namespace PlaylistSaver
             }
 
             app.UseHttpsRedirection();
+            app.UseBlazorFrameworkFiles();
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseAuthentication();
+            app.UseIdentityServer();
+            app.UseAuthorization();
+
+            //app.UseRouting();
 
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
                 endpoints.MapRazorPages();
+                endpoints.MapControllers();
+                endpoints.MapRazorPages();
+                endpoints.MapFallbackToFile("index.html");
             });
         }
     }
