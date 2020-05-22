@@ -7,5 +7,10 @@ namespace PlaylistSaver.Service
 {
     public class DbService
     {
+        using(AppContext db=new AppContext())
+        void AddVideo(string url)
+        {
+        db.Playlist.Add(url);
+        }
     }
 }

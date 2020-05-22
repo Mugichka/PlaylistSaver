@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace PlaylistSaver.Models
 {
-    public class SaverUser:IdentityUser
+    public class SaverUser : IdentityUser
     {
         public int Id { get; set; }
         public string Name { get; set; }
