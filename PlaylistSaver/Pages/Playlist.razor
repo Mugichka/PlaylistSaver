@@ -30,13 +30,12 @@
 
 @code {
     //readonly YoutubeClient youtube = new YoutubeClient();
-    string url; //= "https://www.youtube.com/playlist?list=PLcGXBsk0XWfyjihyUjOr0J-0l1jUaro_d";
+    string url;
+
     List<YoutubeExplode.Videos.Video> vidsList = new List<YoutubeExplode.Videos.Video>();
     int count = 0;
     async void GetPlaylist()
     {
-        count=1;
-        count = 2;
 
         await foreach (var video in YoutubeService.youtube.Playlists.GetVideosAsync(url))
         {

@@ -1,36 +1,26 @@
-﻿@page "/"
+﻿@page "/video"
 @using YoutubeExplode
 
 <form>
     <input type="url" class="form-control" aria-describedby="youtube video link" placeholder="Video Link" @bind="url">
     <button type="button" class="btn btn-primary" @onclick="GetVideo">Submit</button>
 </form>
-<img src="@img" class="rounded mx-auto d-block">
+<img src="" class="rounded mx-auto d-block">
 <div class="card">
     <div class="card-body">
-        <h3 class="card-header">@author</h3>
-        <h5 class="card-title">@title</h5>
-        <h3 class="text-body">@description</h3>
+        <h3 class="card-header"></h3>
+        <h5 class="card-title"></h5>
+        <h3 class="text-body"></h3>
     </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 @code {
-    readonly YoutubeClient youtube = new YoutubeClient();
-    string url = "PLcGXBsk0XWfxDt_jRTzwpS5bKBnu285qx";
-    string title;
-    string img;
-    string description;
-    string author;
 
-    async void GetVideo()
+    string url;
+    void GetVideo()
     {
-        var video = await youtube.Videos.GetAsync(url);
-        title = "Title: " + video.Title;
-        img = video.Thumbnails.HighResUrl;
-        description = video.Description;
-        author = "Author:" + video.Author;
-        
+
     }
 
 }

@@ -24,7 +24,7 @@ namespace PlaylistSaver.Data
         {
             base.OnModelCreating(builder);
         }
-        protected 
+       
 
     }
 }

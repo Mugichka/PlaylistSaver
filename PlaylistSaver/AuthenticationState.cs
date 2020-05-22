@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PlaylistSaver.Service
+namespace PlaylistSaver
 {
-    public class DbService
+    public class AuthenticationState
     {
-        
     }
 }

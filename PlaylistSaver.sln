@@ -3,7 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30104.148
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlaylistSaver", "PlaylistSaver\PlaylistSaver.csproj", "{9E48EB05-0EB9-4D67-AA25-2FFBA2258FC4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlaylistSaver", "PlaylistSaver\PlaylistSaver.csproj", "{9E48EB05-0EB9-4D67-AA25-2FFBA2258FC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playlist.Server", "Playlist.Server\Playlist.Server.csproj", "{1B59AAB8-6442-4B0B-BFE5-1D9FD445A40C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playlist.Shared", "Playlist.Shared\Playlist.Shared.csproj", "{C3E7CCEE-CA55-4FBC-84B6-D273931344C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Playlist.ComponentsLibrary", "Playlist.ComponentsLibrary\Playlist.ComponentsLibrary.csproj", "{D5EF1676-6DF3-4FD5-9CAE-8A4B93892E54}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +21,18 @@ Global
 		{9E48EB05-0EB9-4D67-AA25-2FFBA2258FC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9E48EB05-0EB9-4D67-AA25-2FFBA2258FC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9E48EB05-0EB9-4D67-AA25-2FFBA2258FC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B59AAB8-6442-4B0B-BFE5-1D9FD445A40C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B59AAB8-6442-4B0B-BFE5-1D9FD445A40C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B59AAB8-6442-4B0B-BFE5-1D9FD445A40C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B59AAB8-6442-4B0B-BFE5-1D9FD445A40C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3E7CCEE-CA55-4FBC-84B6-D273931344C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3E7CCEE-CA55-4FBC-84B6-D273931344C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3E7CCEE-CA55-4FBC-84B6-D273931344C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3E7CCEE-CA55-4FBC-84B6-D273931344C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D5EF1676-6DF3-4FD5-9CAE-8A4B93892E54}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D5EF1676-6DF3-4FD5-9CAE-8A4B93892E54}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D5EF1676-6DF3-4FD5-9CAE-8A4B93892E54}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D5EF1676-6DF3-4FD5-9CAE-8A4B93892E54}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
