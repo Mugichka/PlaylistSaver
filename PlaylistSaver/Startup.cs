@@ -11,6 +11,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using PlaylistSaver.Data;
 using PlaylistSaver.Service;
+//using BlazorSignalRApp.Server.Hubs;
+using Microsoft.AspNetCore.ResponseCompression;
 
 namespace PlaylistSaver
 {
@@ -32,6 +34,13 @@ namespace PlaylistSaver
             services.AddSingleton<WeatherForecastService>();
             services.AddSingleton<DbService>();
             services.AddSingleton<YoutubeService>();
+            services.AddSignalR();
+            services.AddControllersWithViews();
+            services.AddResponseCompression(opts =>
+            {
+                opts.MimeTypes = ResponseCompressionDefaults.MimeTypes.Concat(
+                    new[] { "application/octet-stream" });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -57,6 +66,7 @@ namespace PlaylistSaver
             {
                 endpoints.MapBlazorHub();
                 endpoints.MapFallbackToPage("/_Host");
+                endpoints.MapHub<ChatHub>("/chatHub");
                 endpoints.MapRazorPages();
                 endpoints.MapControllers();
             });

@@ -7,6 +7,9 @@ namespace PlaylistSaver.Service
 {
     public class DbService
     {
-        
+        void UpdateDb()
+        {
+
+        }
     }
 }
